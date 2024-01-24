@@ -14,29 +14,30 @@ class NoteApp extends React.Component {
 
     console.log(this.state.notes);
 
-  //   this.onDeleteHandler = this.onDeleteHandler.bind(this);
-  //   this.onAddContactHandler = this.onAddContactHandler.bind(this);
-  // }
+    // this.onDeleteHandler = this.onDeleteHandler.bind(this);
+    this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
+  }
 
   // onDeleteHandler(id) {
   //   const contacts = this.state.contacts.filter((contact => contact.id !== id));
   //   this.setState({ contacts });
   // }
 
-  // onAddContactHandler({ name, tag }) {
-  //   this.setState((prevState) => {
-  //     return {
-  //       contacts: [
-  //         ...prevState.contacts,
-  //         {
-  //           id: +new Date(),
-  //           name,
-  //           tag,
-  //           imageUrl: '/images/default.jpg'
-  //         }
-  //       ]
-  //     }
-  //   })
+  onAddNoteHandler({ title, body }) {
+    this.setState((prevState) => {
+      return {
+        notes: [
+          ...prevState.notes,
+          {
+            id: +new Date(),
+            title,
+            body,
+            createAt: new Date().toLocaleDateString(),
+            archived: false,
+          }
+        ]
+      }
+    })
   }
 
   render() {
@@ -44,7 +45,7 @@ class NoteApp extends React.Component {
       <div className='note-app'>
         <NoteHeader />
         {/* <ContactInput addContact={this.onAddContactHandler} /> */}
-        <NoteBody notes={this.state.notes} />
+        <NoteBody notes={this.state.notes} addNote={this.onAddNoteHandler} />
         {/* <ContactList contacts={this.state.contacts} onDelete={this.onDeleteHandler} /> */}
       </div>
     )
