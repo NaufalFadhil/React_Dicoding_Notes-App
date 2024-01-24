@@ -38,8 +38,9 @@ class NoteBody extends React.Component {
 
   render() {
     return (
-      <div className='note-body'>
+      <div className='note-app__body'>
         <NoteInput addNote={this.onAddNoteHandler} />
+        <h2>Catatan Aktif</h2>
         <NoteList notes={this.state.notes} onDelete={this.onDeleteHandler} />
       </div>
     )

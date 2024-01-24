@@ -34,10 +34,10 @@ class NoteInput extends React.Component {
   render () {
     return (
       <div className='note-input'>
-        <h1 className='note-input__title'>Buat Catatan</h1>
-        <form className='note-input__body' onSubmit={this.onSubmitHandler}>
-          <input type='text' placeholder='Title' value={this.state.title} onChange={this.onTitleChangeHandler} />
-          <textarea placeholder='Write your note here...' value={this.state.body} onChange={this.onBodyChangeHandler}></textarea>
+        <h1>Buat Catatan</h1>
+        <form onSubmit={this.onSubmitHandler}>
+          <input className='note-input__title' type='text' placeholder='Title' value={this.state.title} onChange={this.onTitleChangeHandler} />
+          <textarea className='note-input__body' placeholder='Write your note here...' value={this.state.body} onChange={this.onBodyChangeHandler}></textarea>
           <button type='submit'>Add</button>
         </form>
       </div>
