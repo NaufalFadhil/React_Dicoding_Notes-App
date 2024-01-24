@@ -41,7 +41,12 @@ class NoteBody extends React.Component {
       <div className='note-app__body'>
         <NoteInput addNote={this.onAddNoteHandler} />
         <h2>Catatan Aktif</h2>
-        <NoteList notes={this.state.notes} onDelete={this.onDeleteHandler} />
+        {
+          (this.state.notes == 0 
+          ? <p className='notes-list__empty-message'>Tidak ada catatan</p> 
+          : <NoteList notes={this.state.notes} onDelete={this.onDeleteHandler} />
+          )
+        }
       </div>
     )
   }
