@@ -6,11 +6,13 @@ import NoteBody from './NoteBody';
 // import ContactInput from './ContactInput';
 
 class NoteApp extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     contacts: getData(),
-  //   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      notes: getInitialData(),
+    }
+
+    console.log(this.state.notes);
 
   //   this.onDeleteHandler = this.onDeleteHandler.bind(this);
   //   this.onAddContactHandler = this.onAddContactHandler.bind(this);
@@ -35,14 +37,14 @@ class NoteApp extends React.Component {
   //       ]
   //     }
   //   })
-  // }
+  }
 
   render() {
     return (
       <div className='note-app'>
         <NoteHeader />
         {/* <ContactInput addContact={this.onAddContactHandler} /> */}
-        <NoteBody />
+        <NoteBody notes={this.state.notes} />
         {/* <ContactList contacts={this.state.contacts} onDelete={this.onDeleteHandler} /> */}
       </div>
     )

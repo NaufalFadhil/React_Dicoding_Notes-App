@@ -1,15 +1,15 @@
 import React from 'react'
 import NoteInput from './NoteInput'
+import NoteList from './NoteList'
 
-class NoteBody extends React.Component {
-  render() {
-    return (
-      <div className='note-app__body'>
-        <NoteInput />
-        <h1>Catatan Aktif</h1>
-      </div>
-    )
-  }
+function NoteBody({ notes }) {
+  return (
+    <div className='note-app__body'>
+      <NoteInput />
+      <h1>Catatan Aktif</h1>
+      <NoteList notes={notes} />
+    </div>
+  )
 }
 
 export default NoteBody
