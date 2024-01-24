@@ -12,16 +12,17 @@ class NoteApp extends React.Component {
       notes: getInitialData(),
     }
 
-    console.log(this.state.notes);
-
-    // this.onDeleteHandler = this.onDeleteHandler.bind(this);
+    this.onDeleteHandler = this.onDeleteHandler.bind(this);
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
   }
 
-  // onDeleteHandler(id) {
-  //   const contacts = this.state.contacts.filter((contact => contact.id !== id));
-  //   this.setState({ contacts });
-  // }
+  onDeleteHandler(id) {
+    this.setState((prevState) => {
+      return {
+        notes: prevState.notes.filter((note) => note.id !== id)
+      }
+    })
+  }
 
   onAddNoteHandler({ title, body }) {
     this.setState((prevState) => {
@@ -45,7 +46,7 @@ class NoteApp extends React.Component {
       <div className='note-app'>
         <NoteHeader />
         {/* <ContactInput addContact={this.onAddContactHandler} /> */}
-        <NoteBody notes={this.state.notes} addNote={this.onAddNoteHandler} />
+        <NoteBody notes={this.state.notes} addNote={this.onAddNoteHandler} deleteNote={this.onDeleteHandler} />
         {/* <ContactList contacts={this.state.contacts} onDelete={this.onDeleteHandler} /> */}
       </div>
     )

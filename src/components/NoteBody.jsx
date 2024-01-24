@@ -1,55 +1,20 @@
 import React from 'react'
 import NoteInput from './NoteInput'
 import NoteList from './NoteList'
-import { showFormattedDate } from '../utils';
 
-class NoteBody extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      notes: this.props.notes,
-    }
-
-    this.onDeleteHandler = this.onDeleteHandler.bind(this);
-    this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
-  }
-
-  onDeleteHandler(id) {
-    const notes = this.state.notes.filter((note => note.id !== id));
-    this.setState({ notes });
-  }
-
-  onAddNoteHandler({ title, body }) {
-    this.setState((prevState) => {
-      return {
-        notes: [
-          ...prevState.notes,
-          {
-            id: +new Date(),
-            title,
-            body,
-            createdAt: new Date(),
-            archived: false,
-          }
-        ]
+function NoteBody({ notes, addNote, deleteNote }) {
+  return (
+    <div className='note-app__body'>
+      <NoteInput addNote={addNote} />
+      <h2>Catatan Aktif</h2>
+      {
+        (notes == 0 
+        ? <p className='notes-list__empty-message'>Tidak ada catatan</p> 
+        : <NoteList notes={notes} deleteNote={deleteNote} />
+        )
       }
-    })
-  }
-
-  render() {
-    return (
-      <div className='note-app__body'>
-        <NoteInput addNote={this.onAddNoteHandler} />
-        <h2>Catatan Aktif</h2>
-        {
-          (this.state.notes == 0 
-          ? <p className='notes-list__empty-message'>Tidak ada catatan</p> 
-          : <NoteList notes={this.state.notes} onDelete={this.onDeleteHandler} />
-          )
-        }
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default NoteBody

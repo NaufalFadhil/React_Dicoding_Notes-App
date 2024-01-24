@@ -3,7 +3,7 @@ import React from 'react'
 import NoteInputBody from './NoteInputBody';
 import NoteItem from './NoteItem';
 
-function NoteList({ notes, onDelete }) {
+function NoteList({ notes, deleteNote }) {
   return (
     <div className='notes-list'>
       {
@@ -12,7 +12,7 @@ function NoteList({ notes, onDelete }) {
             key={note.id}
             title={note.title}
             content={note.content}
-            onDelete={onDelete}
+            onDelete={deleteNote}
             {...note}
           />
         ))
